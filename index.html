@@ -15,41 +15,36 @@
 
 body {
   font-family: Georgia, serif;
-  background: linear-gradient(135deg, #fff0f5, #ffd6e5, #ffe4ec);
+  background: linear-gradient(135deg,#fff0f5,#ffd6e5,#ffe4ec);
   color: #8b1745;
   text-align: center;
 }
 
 header {
   padding: 65px 15px 45px;
-  background: linear-gradient(135deg, #e83e75, #9d174d);
+  background: linear-gradient(135deg,#e83e75,#9d174d);
   color: white;
   border-radius: 0 0 35px 35px;
 }
 
 header h1 {
   font-size: 36px;
-  margin-bottom: 15px;
-}
-
-header p {
-  font-size: 17px;
+  margin: 15px;
 }
 
 .heart {
   font-size: 45px;
-  margin: 15px;
-  animation: beat 1.2s infinite;
+  animation: beat 1s infinite;
 }
 
 @keyframes beat {
-  50% { transform: scale(1.25); }
+  50% {transform: scale(1.25);}
 }
 
 section {
   padding: 35px 15px;
-  margin: 15px auto;
   max-width: 900px;
+  margin: auto;
 }
 
 h2 {
@@ -57,40 +52,12 @@ h2 {
   color: #bd245b;
 }
 
-.message {
+.message,.song-box {
   background: white;
   padding: 25px;
   border-radius: 20px;
   line-height: 1.9;
   box-shadow: 0 5px 20px #d98ca944;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 13px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px #a33b5b44;
-}
-
-.song {
-  background: white;
-  padding: 22px;
-  border-radius: 20px;
-}
-
-iframe {
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 16 / 9;
-  border: none;
-  border-radius: 14px;
 }
 
 .date {
@@ -99,16 +66,54 @@ iframe {
   color: #d62968;
 }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 13px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px #a33b5b44;
+}
+
+button {
+  background: linear-gradient(135deg,#ed397b,#a91651);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-size: 17px;
+  cursor: pointer;
+  margin: 15px;
+}
+
+iframe {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: 14px;
+}
+
+#player {
+  display: none;
+  margin-top: 20px;
+}
+
 footer {
   background: #9d174d;
   color: white;
-  padding: 30px 10px;
+  padding: 30px;
   border-radius: 25px 25px 0 0;
 }
 
-@media(max-width: 400px) {
-  .gallery img { height: 210px; }
-  header h1 { font-size: 29px; }
+@media(max-width:400px) {
+  header h1 {font-size:29px;}
+  .gallery img {height:210px;}
 }
 </style>
 </head>
@@ -120,6 +125,21 @@ footer {
   <h1>Bito ❤️ Kuntala</h1>
   <p>Welcome To Our Little Love Story</p>
   <p>Two Hearts, One Beautiful Beginning</p>
+
+  <button onclick="startLove()">
+    ❤️ Start Our Love Story
+  </button>
+
+  <div id="player">
+    <p>🎵 Our Special Song</p>
+    <iframe
+      id="youtube"
+      src=""
+      title="Bito and Kuntala special song"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
 </header>
 
 <section>
@@ -140,35 +160,20 @@ footer {
   <h2>📸 Our Beautiful Memories</h2>
 
   <div class="gallery">
-
-    <img src="https://i.ibb.co/3ycfhSkt/IMG-20261031-WA0013.jpg"
-    alt="Kuntala">
-
-    <img src="https://i.ibb.co/4zk9VS3/file-00000000291c8208ab87964e12983e6e.png"
-    alt="Bito and Kuntala">
-
-    <img src="https://i.ibb.co/jZ1RmhcX/file-00000000fbc082119c4a145e323316d0.png"
-    alt="Our memory">
-
-    <img src="https://i.ibb.co/prLC1Gkt/file-0000000063f48208a6b17473a31c1cbd.png"
-    alt="Together">
-
+    <img src="https://i.ibb.co/3ycfhSkt/IMG-20261031-WA0013.jpg" alt="Memory 1">
+    <img src="https://i.ibb.co/4zk9VS3/file-00000000291c8208ab87964e12983e6e.png" alt="Memory 2">
+    <img src="https://i.ibb.co/jZ1RmhcX/file-00000000fbc082119c4a145e323316d0.png" alt="Memory 3">
+    <img src="https://i.ibb.co/prLC1Gkt/file-0000000063f48208a6b17473a31c1cbd.png" alt="Memory 4">
   </div>
 </section>
 
 <section>
   <h2>🎵 Our Special Song</h2>
-  <div class="song">
+  <div class="song-box">
     <p>One song, countless feelings ❤️</p>
-    <br>
-
-    <iframe
-      src="https://www.youtube.com/embed/kq19ZFnmze8"
-      title="Our Special Song"
-      allow="encrypted-media; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-
+    <p>Bito ❤️ Kuntala</p>
+    <button onclick="startLove()">▶ Play Our Song</button>
+    <p><small>Tap to start the music</small></p>
   </div>
 </section>
 
@@ -177,11 +182,9 @@ footer {
   <div class="message">
     <p>Dear Kuntala ❤️</p>
     <br>
-    <p>
-      I don't know how our story will be written
-      in the future, but I am happy that you
-      are a part of my present.
-    </p>
+    <p>I don't know how our story will be written
+    in the future, but I am happy that you
+    are a part of my present.</p>
     <br>
     <p>Let's make more beautiful memories together.</p>
     <br>
@@ -202,6 +205,28 @@ footer {
   <p>Bito ❤️ Kuntala</p>
 </footer>
 
+<script>
+let songStarted = false;
+
+function startLove() {
+  const player = document.getElementById("player");
+  const youtube = document.getElementById("youtube");
+
+  player.style.display = "block";
+
+  if (!songStarted) {
+    youtube.src =
+      "https://www.youtube.com/embed/kq19ZFnmze8?autoplay=1&playsinline=1";
+    songStarted = true;
+  }
+
+  player.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+}
+</script>
+
 </body>
   </html>
-                                                 
+      
